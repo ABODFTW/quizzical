@@ -1,19 +1,24 @@
 import React from "react";
+
+import QuizPage from "./components/QuizPage";
+import LaunchPage from "./components/LaunchPage";
+import { motion } from "framer-motion";
+
 import "./App.css";
 
 function App() {
-  React.useEffect(() => {
-    const response = fetch("https://opentdb.com/api.php?amount=5&category=22");
-    response
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
-  }, []);
+  const [isNewGame, setIsNewGame] = React.useState(true);
+
+  function toggleLaunchPage() {
+    setIsNewGame((prev) => !prev);
+  }
 
   return (
     <div className="App">
-      <h1>Hello world!</h1>
+      <motion.div animate={{ scale: 2 }} transition={{ duration: 1 }}>
+        {isNewGame && <LaunchPage toggleLaunchPage={toggleLaunchPage} />}
+      </motion.div>
+      {!isNewGame && <QuizPage />}
     </div>
   );
 }
