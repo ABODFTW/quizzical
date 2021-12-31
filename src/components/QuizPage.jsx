@@ -27,6 +27,10 @@ export default function QuizPage() {
       .then((data) => {
         // Reset game
         setGameOver(false);
+        // Reset selected option
+        setUserAnswers({});
+        // Reset score
+        setScore(0);
         // Setting questions
         setQuestions(data.results);
         // Setting correct answers
