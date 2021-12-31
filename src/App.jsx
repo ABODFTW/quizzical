@@ -15,9 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <motion.div animate={{ scale: 2 }} transition={{ duration: 1 }}>
-        {isNewGame && <LaunchPage toggleLaunchPage={toggleLaunchPage} />}
-      </motion.div>
+      {isNewGame && <LaunchPage toggleLaunchPage={toggleLaunchPage} />}
       {!isNewGame && <QuizPage />}
     </div>
   );
